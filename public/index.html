@@ -1,56 +1,171 @@
-<!DOCTYPE>
-<html ng-app="myApp">
-<head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <title>Brian Kan - Resume</title>
 
-	<title> Contact List App</title>
+    <!-- Bootstrap core CSS -->
+    <link href="resources/bootstrap.css" rel="stylesheet">
 
-</head>
-<body>
 
-<!-- <input ng-model="test">
-		{{test}} -->
-	<div class="container" ng-controller="AppCtrl">
-		<h1> Contact List App </h1>
+    <!-- Custom styles for this template -->
+    <link href="resources/carousel.css" rel="stylesheet">
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
 
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Number</th>
-				</tr>
-			</thead>
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Brian Kan</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
 
-		<tbody>
-		<tr ng-repeat="contact in contactlist">
-			<td>{{contact.name}}</td>
-			<td>{{contact.email}}</td>
-			<td>{{contact.number}}</td>
-			<td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
-			<td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
-		</tr>
+      </div>
+    </div>
 
-		<tr>
-			<td><input class="form-control" ng-model="contact.name"></td>
-			<td><input class="form-control" ng-model="contact.email"></td>
-			<td><input class="form-control" ng-model="contact.number"></td>
-			<td><button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
-			<td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;
-			<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
-		</tr>
+      <img id="profilepic" class='img-circle' src='resources/profile.jpg' width='240' height='240' />
 
-		</tbody>
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="second-slide" src="resources/banner.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Brian Kan</h1>
+              <p>Tech Enthusiast and Software Engineer</br>Email: Brian.A.Kan@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.carousel -->
 
-		</table>
-		</div>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
 
-		<script src="controllers/controller.js"></script>
-</body>
-</html>
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      
+
+      <!-- START THE FEATURETTES -->
+
+      
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Education <span class="text-muted"></span></h2>
+          <div style="width:650px" class="container" ng-controller="AppCtrl">
+          <table class="table">
+             <tbody>
+               <tr class="lead" ng-repeat="contact in contactlist | filter:{type: 'edu'}">
+              <ul>
+                <td><li><b><i>{{contact.school}}, {{contact.last_year}}</b></i><div style="padding-left:3em">{{contact.degree}}</div></li></td>
+              </ul>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+        <div class="col-md-5">
+          <img class='img-circle' data-src="holder.js/500x500/auto" alt="500x500" src="resources/education.jpg" data-holder-rendered="true">
+        </div>
+      </div>
+
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Skills <span class="text-muted"></span></h2>
+          <div style="width:650px" class="container" ng-controller="AppCtrl">
+           <table class="table">
+             <tbody>
+               <tr class="lead" ng-repeat="contact in contactlist | filter:{type: 'skill'}">
+              <ul>
+                <td><li>{{contact.skill}}</li></td>
+              </ul>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+        <div class="col-md-5 col-md-pull-8">
+          <img class='img-circle' data-src="holder.js/500x500/auto" alt="500x500" src="resources/skills.jpg" data-holder-rendered="true">
+        </div>
+      </div>
+
+
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Projects <span class="text-muted">CS</span></h2>
+          <div style="width:650px" class="container" ng-controller="AppCtrl">
+           <table class="table">
+             <tbody>
+               <tr class="lead" ng-repeat="contact in contactlist | filter:{type: 'project'}">
+              <ul>
+                <td><li><b>{{contact.title}}</b></br><div style="padding-left:3em">{{contact.description}}</div></li></td>
+              </ul>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+        <div class="col-md-5">
+          <img class='img-circle' data-src="holder.js/500x500/auto" alt="500x500" src="resources/projects.png" data-holder-rendered="true">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>© 2016 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="Carousel%20Template%20for%20Bootstrap_files/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="Carousel%20Template%20for%20Bootstrap_files/bootstrap.js"></script>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <script src="controllers/controller.js"></script>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">500x500</text></svg></body></html>
