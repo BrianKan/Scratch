@@ -14,6 +14,24 @@ app.get('/contactlist', function (req, res) {
   });
 });
 
+app.get('/skills', function (req, res) {
+  db.contactlist.find({type: 'skill'},function(err, doc){
+      res.json(doc);
+  });
+});
+
+app.get('/edu', function (req, res) {
+  db.contactlist.find({type: 'edu'},function(err, doc){
+      res.json(doc);
+  });
+});
+
+app.get('/project', function (req, res) {
+  db.contactlist.find({type: 'project'},function(err, doc){
+      res.json(doc);
+  });
+});
+
 app.get('/admin', function(req,res){
 	res.sendFile(path.join(__dirname+'/public/admin.html'));
 });
