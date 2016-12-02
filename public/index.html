@@ -86,9 +86,9 @@
           <div style="width:650px" class="container" ng-controller="AppCtrl">
           <table class="table">
              <tbody>
-               <tr class="lead" ng-repeat="contact in contactlist | filter:{type: 'edu'}">
+               <tr class="lead" ng-repeat="edu in edus | filter:{type: 'edu'}">
               <ul>
-                <td><li><b><i>{{contact.school}}, {{contact.last_year}}</b></i><div style="padding-left:3em">{{contact.degree}}</div></li></td>
+                <td><li><b><i>{{edu.school}}, {{edu.last_year}}</b></i><div style="padding-left:3em">{{edu.degree}}</div></li></td>
               </ul>
               </tr>
             </tbody>
@@ -107,9 +107,9 @@
           <div style="width:650px" class="container" ng-controller="AppCtrl">
            <table class="table">
              <tbody>
-               <tr class="lead" ng-repeat="contact in contactlist | filter:{type: 'skill'}">
+               <tr class="lead" ng-repeat="skill in skills">
               <ul>
-                <td><li>{{contact.skill}}</li></td>
+                <td><li>{{skill.skill}}</li></td>
               </ul>
               </tr>
             </tbody>
@@ -129,9 +129,9 @@
           <div style="width:650px" class="container" ng-controller="AppCtrl">
            <table class="table">
              <tbody>
-               <tr class="lead" ng-repeat="contact in contactlist | filter:{type: 'project'}">
+               <tr class="lead" ng-repeat="project in projects | filter:{type: 'project'}">
               <ul>
-                <td><li><b>{{contact.title}}</b></br><div style="padding-left:3em">{{contact.description}}</div></li></td>
+                <td><li><b>{{project.title}}</b></br><div style="padding-left:3em">{{project.description}}</div></li></td>
               </ul>
               </tr>
             </tbody>

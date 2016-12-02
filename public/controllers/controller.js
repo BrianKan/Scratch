@@ -12,26 +12,28 @@ myApp.controller('AppCtrl',[ '$scope','$http', function($scope,$http){
 	};
 	refresh();
 
-	$scope.skills=function(){
+	var skills=function(){
 		$http.get('/skills').success(function(response){
-			$scope.contactlist=response;
-			$scope.contact="";
+			$scope.skills=response;
+			$scope.skill="";
 		});
 	};
+	skills();
 
-	$scope.edu=function(){
+	var edus=function(){
 		$http.get('/edu').success(function(response){
-			$scope.contactlist=response;
-			$scope.contact="";
+			$scope.edus=response;
+			$scope.edu="";
 		});
 	};
-
-	$scope.project=function(){
+	edus();
+	var projects=function(){
 		$http.get('/project').success(function(response){
-			$scope.contactlist=response;
-			$scope.contact="";
+			$scope.projects=response;
+			$scope.project="";
 		});
 	};
+	projects();
 
 	$scope.addContact=function(){
 		$http.post('/contactlist', $scope.contact)
